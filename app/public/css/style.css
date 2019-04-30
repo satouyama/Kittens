@@ -1,0 +1,58 @@
+/*
+* Todo:
+*  > Cursor
+*  > More kittens
+*  - Bugs
+*/
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+body {
+  padding: 9px;
+}
+
+#terminal {
+  font-size: 1em;
+  font-family: Monaco, Andale Mono, Monospace, Courier;
+  padding: 3px;
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: #0f0;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  white-space: pre-wrap;
+  text-shadow: 0 0 2px rgba($green, 0.75);
+  line-height: 1;
+}
+
+#terminal input {
+  outline: none;
+  background: #000 !important;
+  font-family: Monaco, Andale Mono, Monospace, Courier;
+  border: 0px;
+  -webkit-appearance: none;
+  padding: 0;
+  margin: 0;
+  color: #0f0;
+  width: 90%;
+  font-size: 1em;
+  line-height: 1;
+  margin-bottom: 0.75em;
+}
+
+#terminal p {
+  margin-bottom: 0.75em;
+}
