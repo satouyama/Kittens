@@ -1,5 +1,6 @@
 var express = require('express');
 const app = express();
+const port = process.env.port || 3000;
 
 
 app.set('view engine','ejs');
@@ -13,7 +14,7 @@ app.get('/', (req, res)=>{
 app.get('/portfolio', (req, res)=>{
     res.render('portfolio')
 })
-app.listen(3000, function(err){
+app.listen(port, function(err){
     if(err) {
         console.log('não foi possivel subir o servidor');
     } else {
