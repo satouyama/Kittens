@@ -50,7 +50,6 @@ window.requestAnimFrame=function(){return window.requestAnimationFrame||window.w
               animatedLog("> aqui está parte do seu codigo 2448", "#00FF00", "animatedIntroMessage5", function() {
                 animatedLog("> adicione uma '/' na url e coloque o código", "#00FF00", "animatedIntroMessage6", function() {
                   animatedLog("> Lembrando que tem duas partes do código escondidas por aí", "#00FF00", "animatedIntroMessage6", function() {
-                    newline();
                   }, 400, 1000);
                 }, 400, 1000);
               }, 1400, 1000);
@@ -68,7 +67,6 @@ window.requestAnimFrame=function(){return window.requestAnimationFrame||window.w
                 animatedLog(">Obrigado por aguardar...", "#00FF00", "animatedIntroMessage6", function() {
                   animatedLog(">Seu código é 2509...", "#00FF00", "animatedIntroMessage6", function() {
                     animatedLog("> Lembrando que tem duas partes do código escondidas por aí", "#00FF00", "animatedIntroMessage6", function() {
-                      newline();
                     }, 400, 1000);
                   }, 400, 1000);
                 }, 400, 1000);
