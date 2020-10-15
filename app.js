@@ -15,7 +15,7 @@ app.get('/', (req, res)=>{
 app.get('/24482509', (req, res)=>{
     let last_code = number.aleaRNGFactory(1234);
     console.log(last_code)
-    res.send(`Aqui está seu ultimo código ${last_code.uInt32()}, falta pouco`);
+    res.send(`Aqui está seu ultimo código ${last_code.uInt32()}, falta pouco.`);
 })
 app.listen(port, function(err){
     if(err) {
