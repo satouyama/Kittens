@@ -32,7 +32,7 @@ window.requestAnimFrame=function(){return window.requestAnimationFrame||window.w
   var prompt = "> ",
     self = document.getElementById("terminal"),
     commands = {
-      "gatinhos": function() {
+      "gato": function() {
         //kittens from: http://user.xmission.com/~emailbox/ascii_cats.htm
         var kittens = [
           ["   |\\      _,,,---,,_", "   /,`.-'`'    -.  ;-;;,_", "  |,4-  ) )-,_..;\\ (  `'-'", " '---''(_/--'  `-'\\_)  "],
@@ -47,28 +47,30 @@ window.requestAnimFrame=function(){return window.requestAnimationFrame||window.w
         setTimeout(function() {
           animatedLog("> Isso funcionou ? ", "#00FF00", "animatedIntroMessage3", function() {
             animatedLog("> Bem, Talvez a página esteja perdida para sempre", "#00FF00", "animatedIntroMessage4", function() {
-              animatedLog("> se você encontrar o problema, contate o administrador", "#00FF00", "animatedIntroMessage5", function() {
-                animatedLog("> Ele também gosta de gatinhos!", "#00FF00", "animatedIntroMessage6", function() {
-                  newline();
+              animatedLog("> aqui está parte do seu codigo 2448", "#00FF00", "animatedIntroMessage5", function() {
+                animatedLog("> adicione uma '/' na url e coloque o código", "#00FF00", "animatedIntroMessage6", function() {
+                  animatedLog("> Lembrando que tem duas partes do código escondidas por aí", "#00FF00", "animatedIntroMessage6", function() {
+                    newline();
+                  }, 400, 1000);
                 }, 400, 1000);
               }, 1400, 1000);
             }, 800, 1000);
           }, 500);
         }, ((logs.length + 1) * 100) + 1000);
       },
-      "Lanna": function() {
+      "valorant": function() {
         //kittens from: http://user.xmission.com/~emailbox/ascii_cats.htm
-        var kittens = [
-         
-        ];
       
         setTimeout(function() {
-          animatedLog("> Bem Vinda Lanna Vogel!", "#00FF00", "animatedIntroMessage3", function() {
+          animatedLog("> Bem Vindo!", "#00FF00", "animatedIntroMessage3", function() {
             animatedLog("> Redirecionando...", "#00FF00", "animatedIntroMessage4", function() {
-              animatedLog("> Estamos trabalhando no seu site... aguarde.", "#00FF00", "animatedIntroMessage5", function() {
+              animatedLog("> Estamos trabalhando no seu codigo... aguarde.", "#00FF00", "animatedIntroMessage5", function() {
                 animatedLog(">Obrigado por aguardar...", "#00FF00", "animatedIntroMessage6", function() {
-                  window.location.href = "/portfolio";
-                  newline();
+                  animatedLog(">Seu código é 2509...", "#00FF00", "animatedIntroMessage6", function() {
+                    animatedLog("> Lembrando que tem duas partes do código escondidas por aí", "#00FF00", "animatedIntroMessage6", function() {
+                      newline();
+                    }, 400, 1000);
+                  }, 400, 1000);
                 }, 400, 1000);
               }, 1400, 1000);
             }, 800, 1000);
@@ -143,7 +145,7 @@ window.requestAnimFrame=function(){return window.requestAnimationFrame||window.w
   function init() {
     animatedLog(">Error 404: A página que você procura não foi encontrada, meow", "#00FF00", "animatedIntroMessage1", function() {
       window.setTimeout(function() {
-        animatedLog("> Tente executar o comando 'gatinhos' e talvez isso conserte.", "#00FF00", "animatedIntroMessage2", function() {
+        animatedLog("> Tente executar algum comando e talvez isso conserte. meow", "#00FF00", "animatedIntroMessage2", function() {
           newline();
         });
       }, 500);

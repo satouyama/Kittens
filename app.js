@@ -11,8 +11,8 @@ app.get('/', (req, res)=>{
     res.render('index')
 })
 
-app.get('/portfolio', (req, res)=>{
-    res.render('portfolio')
+app.get('/24482509', (req, res)=>{
+    res.send("Parabéns, pode mandar o print lá no grupo e pegar seu premio");
 })
 app.listen(port, function(err){
     if(err) {
