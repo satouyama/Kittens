@@ -1,3 +1,4 @@
+
 /* Vivum JavaScript animation library
  * 
  * Includes Robert Penner's Easing Functions
@@ -74,8 +75,16 @@ window.requestAnimFrame=function(){return window.requestAnimationFrame||window.w
             }, 800, 1000);
           }, 500);
         }, 1000);
+      },
+      "nordico": function() {
+        //kittens from: http://user.xmission.com/~emailbox/ascii_cats.htm
+        setTimeout(function() {
+          animatedLog("> Parabéns, posta lá no grupo!", "#00FF00", "animatedIntroMessage3", function() {
+          }, 500);
+        }, 1000);
       }
     };
+    
 
   function newline() {
     var node = document.createElement("p");
@@ -97,6 +106,7 @@ window.requestAnimFrame=function(){return window.requestAnimationFrame||window.w
       };
     }, false);
   };
+
 
   function log(txt, color, id) {
     var node = document.createElement("p");

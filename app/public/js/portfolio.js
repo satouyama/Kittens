@@ -1,117 +1,271 @@
-var app = angular.module('portfolio', [])
+// ARTWORK BY THOMAS DENMARK
+// https://www.artstation.com/thomden
+//
+// I had used it in this codepen just for testing purposes.
 
-//navigation controller
-.controller('navCtrl', function($scope) {
-  //navigation menu items
-  $scope.navigation = [{
-    id: '#about',
-    name: 'Sobre'
-  }, {
-    id: '#portfolio',
-    name: 'Portfólio'
-  }, {
-    id: '#contact',
-    name: 'Contato'
-  }, ];
+const MOUSE_WHEEL_EVENT = "wheel";
+const TOUCH_MOVE = "touchmove";
+const TOUCH_END = "touchend";
+const MOUSE_DOWN = "mousedown";
+const MOUSE_UP = "mouseup";
+const MOUSE_MOVE = "mousemove";
+class ScrollPos {
+	constructor() {
+		this.acceleration = 0;
+		this.maxAcceleration = 5;
+		this.maxSpeed = 20;
+		this.velocity = 0;
+		this.dampen = 0.97;
+		this.speed = 8;
+		this.touchSpeed = 8;
+		this.scrollPos = 0;
+		this.velocityThreshold = 1;
+		this.snapToTarget = false;
+		this.mouseDown = false;
+		this.lastDelta = 0;
+		
+		document.addEventListener(
+			"touchstart",
+			function(event) {
+				event.preventDefault();
+			},
+			{ passive: false }
+		);
+		
+		window.addEventListener(MOUSE_WHEEL_EVENT, event => {
+			event.preventDefault();
+			this.accelerate(Math.sign(event.deltaY) * this.speed);
+		});
+		
+		window.addEventListener(TOUCH_MOVE, event => {
+			//event.preventDefault();
+			let delta = this.lastDelta-event.targetTouches[0].clientY;
+			this.accelerate(Math.sign(delta) * this.touchSpeed);
+			this.lastDelta = event.targetTouches[0].clientY;
+		})
+		
+		window.addEventListener(TOUCH_END, event =>{
+			this.lastDelta = 0;
+		})
+		
+		window.addEventListener(MOUSE_DOWN, event=>{
+			this.mouseDown = true;
+		})
+		
+		window.addEventListener(MOUSE_MOVE, event=>{
+			if(this.mouseDown){
+				let delta = this.lastDelta-event.clientY;
+				this.accelerate(Math.sign(delta) * this.touchSpeed*0.4);
+				this.lastDelta = event.clientY;
+			}
+		})
+		
+		window.addEventListener(MOUSE_UP, event=>{
+			this.lastDelta = 0;
+			this.mouseDown = false;
+		})
 
-  // Highlight the top nav as scrolling occurs
-  $('body').scrollspy({
-    target: '.navbar-fixed-top'
-  })
+	}
+	accelerate(amount) {
+		if (this.acceleration < this.maxAcceleration) {
+			this.acceleration += amount;
+		}
+	}
+	update() {
+		this.velocity += this.acceleration;
+		if (Math.abs(this.velocity) > this.velocityThreshold) {
+			this.velocity *= this.dampen;
+			this.scrollPos += this.velocity;
+		} else {
+			this.velocity = 0;
+		}
+		if (Math.abs(this.velocity) > this.maxSpeed) {
+			this.velocity = Math.sign(this.velocity) * this.maxSpeed;
+		}
+		this.acceleration = 0;
+	}
+	snap (snapTarget, dampenThreshold = 100, velocityThresholdOffset = 1.5) {
+		if(Math.abs(snapTarget - this.scrollPos) < dampenThreshold) {
+			this.velocity *= this.dampen;
+		}
+		if (Math.abs(this.velocity) < this.velocityThreshold+velocityThresholdOffset) {
+			this.scrollPos += (snapTarget - this.scrollPos) * 0.1;
+		}
+	}
+	project(steps = 1) {
+		if(steps === 1)	return this.scrollPos + this.velocity * this.dampen
+		var scrollPos = this.scrollPos;
+		var velocity = this.velocity;
 
-  // Closes the Responsive Menu on Menu Item Click
-  $('.navbar-collapse ul li a:not(.dropdown-toggle)').click(function() {
-    $('.navbar-toggle:visible').click();
-  });
+		for(var i = 0; i < steps; i++) {
+				velocity *= this.dampen;
+				scrollPos += velocity;
+		}
+		return scrollPos;
+	}
+}
 
-  //animation on Scroll
-  $scope.animateHeader = function() {
-    var doc = document,
-      elem = doc.documentElement,
-      header = doc.querySelector('.navbar-inverse'),
-      didScroll = false,
-      changeEffect = 220;
+var mouseWheel = new ScrollPos();
+const scrollPerImage = 500;
 
-    window.addEventListener('scroll', function(e) {
-      if (!didScroll) {
-        didScroll = true;
-        setTimeout($scope.scrollPage, 250);
-      }
-    }, false);
+const KEYBOARD_ACCELERATION = 25;
 
-    $scope.scrollPage = function() {
-      var sy = window.scrollY;
-      if (sy >= changeEffect) {
-        $('.navbar-inverse').addClass('navbar-animated');
-      } else {
-        $('.navbar-inverse').removeClass('navbar-animated');
-      }
-      didScroll = false;
-    };
-  };
-
-  $scope.animateHeader();
+window.addEventListener("keydown", (e)=>{
+	switch(e.keyCode) {
+		case 33:
+		case 38:
+			// UP
+			mouseWheel.acceleration -= KEYBOARD_ACCELERATION;
+			mouseWheel.update()
+			break;
+		case 34:
+		case 40:
+			// DOWN
+			mouseWheel.acceleration += KEYBOARD_ACCELERATION;
+			mouseWheel.update()
+			break;
+	}
 })
 
-//home controller
-.controller('homeCtrl', function($scope) {
-  $scope.title = "Lanna Vogel";
-  $scope.description = "Sente-se, relaxe e explore um portfólio incrível";
-})
 
-//about controller
-.controller('aboutCtrl', function($scope) {
-  $scope.aboutText = {
-    title: "Olá!",
-    copyText: "Aqui vai uma breve informação It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
-    facebookUrl: "",
-    githubUrl: "",
-    codepenUrl: ""
-  };
+const folder = "Ragnar";
+const root = `https://mwmwmw.github.io/files/${folder}`;
+const files = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const ext = "jpg";
+const IMAGE_SIZE = 512;
 
-})
+let imageContainer = document.getElementById("images");
+let canvas = document.createElement("canvas");
+		canvas.width = IMAGE_SIZE;
+		canvas.height = IMAGE_SIZE;
+let ctx = canvas.getContext("2d");
 
-//portfolio controller
-.controller('portfolioCtrl', function($scope) {
-    $scope.works = [{
-      id: 1,
-      thumbnail: 'http://placehold.it/360x400',
-      url: '',
-      caption: 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.',
-      title: 'Project 1'
-    }, {
-      id: 2,
-      thumbnail: 'http://placehold.it/360x400',
-      url: '',
-      caption: 'Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.',
-      title: 'Project 2'
-    }, {
-      id: 3,
-      thumbnail: 'http://placehold.it/360x400',
-      url: '',
-      caption: 'Nullam id dolor id nibh ultricies vehicula ut id elit.',
-      title: 'Project 3'
-    }, {
-      id: 4,
-      thumbnail: 'http://placehold.it/360x400',
-      url: '',
-      caption: 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam id dolor id nibh ultricies vehicula ut id elit.',
-      title: 'Project 4'
-    }, {
-      id: 5,
-      thumbnail: 'http://placehold.it/360x400',
-      url: '',
-      caption: 'Nullam id dolor id nibh ultricies vehicula ut id elit.',
-      title: 'Project 5'
-    }, {
-      id: 6,
-      thumbnail: 'http://placehold.it/360x400',
-      url: '',
-      caption: 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.',
-      title: 'Project 6'
-    }];
-  })
-  //contact controller
-  .controller('contactCtrl', function($scope) {
-    $scope.contact = {};
-  });
+function resizeImage(image, size = IMAGE_SIZE) {
+	let newImage = image;
+	let {width, height} = image;
+	let newWidth = size/width;
+	let newHeight = size/height;
+	
+	ctx.drawImage(image, 0, 0, width, height, 0,0, size, size); 
+	
+	return ctx.getImageData(0,0,size,size);
+}
+
+function makeThreeTexture(image) {
+	let tex = new THREE.Texture(image);
+					tex.needsUpdate = true;
+	return tex
+}
+
+function loadImages() {
+	let promises = [];
+	for (var i = 0; i < files.length; i++) {
+		promises.push(
+			new Promise((resolve, reject) => {
+				let img = document.createElement("img");
+				img.crossOrigin = "anonymous";
+				img.src = `${root}/${files[i]}.${ext}`;
+				img.onload = image => {
+					return resolve(image.target);
+				};
+			}).then(resizeImage)
+				.then(makeThreeTexture)
+		);
+	}
+	return Promise.all(promises);
+}
+
+loadImages().then((images) => {
+	document.getElementById("loading").style = "display: none;";
+	init(images);
+});
+
+const renderer = new THREE.WebGLRenderer({ antialias: false });
+document.body.appendChild(renderer.domElement);
+ 
+function init(textures) {
+	let scene = new THREE.Scene();
+	let camera = new THREE.PerspectiveCamera(
+		45,
+		window.innerWidth / window.innerHeight,
+		0.1,
+		2000
+	);
+	camera.position.set(0, 0, 10);
+
+	scene.add(camera);
+
+	let geometry = new THREE.PlaneGeometry(4.75, 7, 4, 4);
+
+	let material = new THREE.ShaderMaterial({
+		uniforms: {
+			time: { value: 1.0 },
+			blend: { value: 0.0 },
+			tex1: { type: "t", value: textures[1] },
+			tex2: { type: "t", value: textures[0] }
+		},
+		vertexShader: document.getElementById("vertexShader").textContent,
+		fragmentShader: document.getElementById("fragmentShader").textContent,
+	});
+
+	let mesh = new THREE.Mesh(geometry, material);
+
+	scene.add(mesh);
+
+	var tex1 = textures[1];
+	var tex2 = textures[0];
+	
+	function updateTexture(pos) {
+		if(tex2 != textures[Math.floor(pos / scrollPerImage)]) {
+			tex2 = textures[Math.floor(pos / scrollPerImage)]
+			material.uniforms.tex2.value = tex2;
+		}
+		if(tex1 != textures[Math.floor(pos / scrollPerImage) + 1]) {
+			tex1 = textures[Math.floor(pos / scrollPerImage) + 1]
+			material.uniforms.tex1.value = tex1;
+		}
+	}
+	
+	
+	
+	function draw() {
+		requestAnimationFrame(draw);
+		mouseWheel.update();
+		let scrollTarget = (Math.floor((mouseWheel.scrollPos+scrollPerImage*0.5) / scrollPerImage)) * scrollPerImage;
+		mouseWheel.snap(scrollTarget);
+		
+		let { scrollPos, velocity } = mouseWheel;
+		
+		if (scrollPos < 0) {
+			scrollPos = 0;
+		}
+		if (scrollPos > scrollPerImage * textures.length - 1) {
+			scrollPos = scrollPerImage * textures.length - 1;
+		}
+		
+		if (scrollPos > 0 && scrollPos < scrollPerImage * textures.length - 1) {
+			updateTexture(scrollPos);
+			material.uniforms.blend.value =
+				(scrollPos % scrollPerImage) / scrollPerImage;
+		}
+		
+		mouseWheel.scrollPos = scrollPos;
+
+		material.uniforms.time.value += 0.1;
+
+		renderer.render(scene, camera);
+	}
+
+	function resize() {
+		camera.aspect = window.innerWidth / window.innerHeight;
+		camera.updateProjectionMatrix();
+		renderer.setPixelRatio(window.devicePixelRatio);
+		renderer.setSize(window.innerWidth, window.innerHeight);
+	}
+
+ 	window.addEventListener("resize", resize);
+	
+ 	resize();
+	draw();
+	
+}
