@@ -76,7 +76,7 @@ window.requestAnimFrame=function(){return window.requestAnimationFrame||window.w
           }, 500);
         }, 1000);
       },
-      "nordico": function() {
+      "1346": function() {
         //kittens from: http://user.xmission.com/~emailbox/ascii_cats.htm
         setTimeout(function() {
           animatedLog("> Parabéns, posta lá no grupo!", "#00FF00", "animatedIntroMessage3", function() {

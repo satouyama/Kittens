@@ -31,6 +31,10 @@ app.post("/response", (req, res)=>{
     res.json({response: "nordico"});
 })
 
+app.get("/warg", (req, res)=>{
+    res.render("warg");
+})
+
 app.listen(port, function(err){
     if(err) {
         console.log('não foi possivel subir o servidor');
