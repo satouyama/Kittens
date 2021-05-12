@@ -37,7 +37,7 @@ window.requestAnimFrame=function(){return window.requestAnimationFrame||window.w
         //kittens from: http://user.xmission.com/~emailbox/ascii_cats.htm
         var kittens = [
           ["   |\\      _,,,---,,_", "   /,`.-'`'    -.  ;-;;,_", "  |,cats  ) )-,_..;\\ (  `'-'", " '---''(_/--'  `-'\\_)  "],
-          ["\\    /\\", " )  ( ')", "(  /  )", " \\(__)|]"],
+          ["\\    /\\", " )  cats ( ')", "(  /  )", " \\(__)|]"],
           [" /\\___/\\", " )     (", "=\\     /=", "  )   (", " / cats    \\", " )     (", "/       \\", "\\       /", " \\__ __/", "     ))", "     //", "    ((", "     \\) "]
         ];
         logs = kittens[Math.floor(Math.random() * kittens.length)];
