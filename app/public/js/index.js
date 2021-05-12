@@ -36,9 +36,9 @@ window.requestAnimFrame=function(){return window.requestAnimationFrame||window.w
       "gato": function() {
         //kittens from: http://user.xmission.com/~emailbox/ascii_cats.htm
         var kittens = [
-          ["   |\\      _,,,---,,_", "   /,`.-'`'    -.  ;-;;,_", "  |,4-  ) )-,_..;\\ (  `'-'", " '---''(_/--'  `-'\\_)  "],
+          ["   |\\      _,,,---,,_", "   /,`.-'`'    -.  ;-;;,_", "  |,cats  ) )-,_..;\\ (  `'-'", " '---''(_/--'  `-'\\_)  "],
           ["\\    /\\", " )  ( ')", "(  /  )", " \\(__)|]"],
-          [" /\\___/\\", " )     (", "=\\     /=", "  )   (", " /     \\", " )     (", "/       \\", "\\       /", " \\__ __/", "     ))", "     //", "    ((", "     \\) "]
+          [" /\\___/\\", " )     (", "=\\     /=", "  )   (", " / cats    \\", " )     (", "/       \\", "\\       /", " \\__ __/", "     ))", "     //", "    ((", "     \\) "]
         ];
         logs = kittens[Math.floor(Math.random() * kittens.length)];
         for (var i = 0, l = logs.length; i < l; i++)
@@ -58,7 +58,7 @@ window.requestAnimFrame=function(){return window.requestAnimationFrame||window.w
           }, 500);
         }, ((logs.length + 1) * 100) + 1000);
       },
-      "valorant": function() {
+      "cats": function() {
         //kittens from: http://user.xmission.com/~emailbox/ascii_cats.htm
       
         setTimeout(function() {
