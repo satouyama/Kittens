@@ -1,0 +1,266 @@
+body {
+    overflow: hidden;
+    background: radial-gradient(#000 16%, transparent 17%), radial-gradient(#444 16%, transparent 17%) 0px 1px,
+        radial-gradient(#000 16%, transparent 17%) 8px 8px, radial-gradient(#444 16%, transparent 17%) 8px 9px;
+    background-color: #282828;
+    background-size: 16px 16px;
+    color: #0ff;
+    font-size: 25px;
+}
+
+#Overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    background: #transparent;
+    border: 1px solid #transparent;
+    box-sizing: border-box;
+    -webkit-transition: all 1s ease;
+}
+
+#Overlay.nay {
+    background: red;
+    opacity: .5;
+    -webkit-transition: all 1s ease;
+}
+
+#Overlay.yay {
+    background: green;
+    opacity: .5;
+    -webkit-transition: all 1s ease;
+}
+
+form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height: 175px;
+    width: 200px;
+    overflow: hidden;
+    background: linear-gradient(#292929, #242424);
+    border: 1px solid grey;
+    box-sizing: border-box;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 10px 10px rgba(0, 0, 0, .4), 0 15px 15px rgba(0, 0, 0, .6);
+}
+
+form input {
+    position: absolute;
+    left: 25px;
+    right: 0;
+    margin: auto;
+    width: 150px;
+    height: 30px;
+    color: #00fffd;
+    background: black;
+    border-left: 4px solid #3b3b3b;
+    border-right: 4px solid #3b3b3b;
+    border-top: 4px solid #141414;
+    border-bottom: 4px solid #2e2e2e;
+    box-sizing: border-box;
+}
+
+::-webkit-input-placeholder {
+    color: transparent;
+    -webkit-transition: color 1s ease;
+}
+
+form:hover ::-webkit-input-placeholder {
+    color: grey;
+    -webkit-transition: color 1s ease 1s;
+}
+
+input:focus {
+    color: #00fffd;
+    outline: none;
+    outline: 0;
+}
+
+input:focus:nth-child(5) {
+    color: #00fffd;
+}
+
+i {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    z-index: 6;
+    font-size: 40px;
+}
+
+i:before {
+    background: -webkit-linear-gradient(#fff, #C0C0C0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+}
+
+i:nth-child(1) {
+    font-size: 28px;
+    top: 25%;
+    left: 7px;
+    margin-top: 1px;
+}
+
+i:nth-child(2) {
+    font-size: 28px;
+    top: 50%;
+    left: 9px;
+    margin-top: 2px;
+}
+
+input:nth-child(3) {
+    top: 25%;
+}
+
+input:nth-child(4) {
+    top: 50%;
+}
+
+input:nth-child(5) {
+    top: 75%;
+    width: 180px;
+    left: 1px;
+    color: grey;
+    background: #222;
+    border-radius: 5px;
+    border: 1px solid #3b3b3b;
+    box-shadow: 0px 5px 0px 0px #141414;
+    -webkit-transition: box-shadow .2s ease, -webkit-transform .2s ease, color .2s ease;
+}
+
+
+input.nay:nth-child(5) {
+    box-shadow: 0px 1px 0px 0px #141414;
+    -webkit-transform: translate(0px, 5px);
+    -webkit-transition: all .2s ease;
+}
+
+input.nay:nth-child(5) {
+    color: red;
+    -webkit-transition: color .2s ease;
+}
+
+input.yay:nth-child(5) {
+    box-shadow: 0px 1px 0px 0px #141414;
+    -webkit-transform: translate(0px, 5px);
+    -webkit-transition: all .2s ease;
+}
+
+input.yay:nth-child(5) {
+    color: green;
+    -webkit-transition: color .2s ease;
+}
+
+
+
+
+.scanner {
+    Position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height: 175px;
+    width: 200px;
+    background: url(http://anthony.germishuys.cloudvent.net/pics/scan/userdark.png) no-repeat center center;
+
+    background-size: cover;
+    overflow: hidden;
+}
+
+.top-scan,
+.bottom-scan {
+    Position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0;
+    width: 200px;
+    height: 0%;
+    overflow: hidden;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0px 0px 10px -1px rgba(0, 198, 255, 0.7);
+}
+
+.top-scan {
+    bottom: 0;
+    border-top: 2px solid transparent;
+}
+
+.bottom-scan {
+    top: 0;
+    border-bottom: 2px solid transparent;
+}
+
+.top-scan.scan {
+    -webkit-animation: scanup 3s linear forwards;
+}
+
+.bottom-scan.scan {
+    -webkit-animation: scandown 3s linear 3s forwards;
+}
+
+.solid,
+.wireframe {
+    Position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 200px;
+    height: 175px;
+}
+
+.wireframe {
+    top: 0;
+    background: url(http://anthony.germishuys.cloudvent.net/pics/scan/wfuser.png) no-repeat center center;
+    background-size: cover;
+}
+
+.solid {
+    bottom: 0;
+    background: url(http://anthony.germishuys.cloudvent.net/pics/scan/user.png) no-repeat center center;
+    background-size: cover;
+}
+
+@-webkit-keyframes scanup {
+    0% {
+        height: 0%;
+        border-top: 2px solid #2187e7;
+    }
+
+    99% {
+        height: 100%;
+        border-top: 2px solid #2187e7;
+    }
+
+    100% {
+        height: 100%;
+        border-top: 2px solid transparent;
+    }
+}
+
+@-webkit-keyframes scandown {
+    0% {
+        height: 0%;
+        border-bottom: 2px solid #2187e7;
+    }
+
+    99% {
+        height: 100%;
+        border-bottom: 2px solid #2187e7;
+    }
+
+    100% {
+        height: 100%;
+        border-bottom: 2px solid transparent;
+    }
+}

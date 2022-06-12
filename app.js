@@ -12,6 +12,26 @@ app.get('/', (req, res)=>{
     res.render('index', {message: "nordico"})
 })
 
+app.get('/access_granted', (req, res)=>{
+    res.render('brute-force', {data: {}})
+})
+
+app.get('/valentines-day', (req, res)=>{
+    res.render('valentines-click', {data: {}})
+})
+
+app.get('/form', (req, res)=>{
+    res.render('form', {data: {}})
+})
+
+app.get('/hydra', (req, res)=>{
+    res.render('hydra', {data: {}})
+})
+
+app.get('/valentine', (req, res)=>{
+    res.render('valentine', {data: {}})
+})
+
 app.get('/24482509', (req, res)=>{
     let last_code = number.aleaRNGFactory(1234);
     console.log(last_code)

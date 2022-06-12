@@ -1,0 +1,79 @@
+.cursive-font {
+    font-family: 'Over the Rainbow', cursive;
+  }
+  .sans-serif-font {
+    font-family: 'Pathway Gothic One', sans-serif;
+  }
+  #top {
+    font-family: 'Over the Rainbow', cursive;
+    color: #EF4F50;
+    text-align: center;
+    font-size: 3em;
+  }
+  p {
+    line-height: 1em;
+  }
+  button {
+    font-family: 'Over the Rainbow', cursive;
+    box-shadow: 0 4px #ab3c3c;
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+    padding: 8px 80px 8px 80px;
+    border-radius: 20px;
+    color: #ffffff;
+    border: none;
+    background-color: #F06060;
+    font-size: 0.4em;
+  }
+  button:hover {
+    background-color: #EF4F50;
+    cursor: pointer;
+    box-shadow: 0 6px #ab3c3c;
+    top: 2px;
+  }
+  .button:active {
+    box-shadow: 0 0 #ab3c3c;
+    top: 6px;
+  }
+  #bottom {
+    margin-top: 1em;
+    background-color: #EF4F50;
+    position: relative;
+    display: none;
+    margin-bottom: 3em;
+    font-family: 'Over the Rainbow', cursive;
+    color: #ffffff;
+    text-align: center;
+    width: 100%;
+    padding-top: 2em;
+    padding-bottom: 5em;
+    font-size: 2.5em;
+  }
+  .close {
+    float: right;
+    padding: 0.25em;
+    background: #fff;
+    font-family: serif;
+    cursor: pointer;
+    color: #779098;
+    font-size: 0.5em;
+    margin-top: -4em;
+  }
+  .netflix {
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 2em;
+    letter-spacing: 5px;
+    text-shadow: 5px 0 0 #000;
+  }
+  .sign-off {
+    margin-top: 3em;
+    font-size: 1.3em;
+  }
+  .name {
+    margin-left: 50px;
+  }
+
+  img {
+    width: 200px;
+  }

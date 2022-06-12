@@ -33,13 +33,14 @@ window.requestAnimFrame=function(){return window.requestAnimationFrame||window.w
   var prompt = "> ",
     self = document.getElementById("terminal"),
     commands = {
-      "gato": function() {
+      "18/01/2022": function() {
         //kittens from: http://user.xmission.com/~emailbox/ascii_cats.htm
         var kittens = [
           ["   |\\      _,,,---,,_", "   /,`.-'`'    -.  ;-;;,_", "  |,cats  ) )-,_..;\\ (  `'-'", " '---''(_/--'  `-'\\_)  "],
           ["\\    /\\", " )  cats ( ')", "(  /  )", " \\(__)|]"],
           [" /\\___/\\", " )     (", "=\\     /=", "  )   (", " / cats    \\", " )     (", "/       \\", "\\       /", " \\__ __/", "     ))", "     //", "    ((", "     \\) "]
         ];
+        var link = `<a href="/access_granted">Clique aqui</a>`
         logs = kittens[Math.floor(Math.random() * kittens.length)];
         for (var i = 0, l = logs.length; i < l; i++)
           setTimeout(function(n) {
@@ -48,11 +49,29 @@ window.requestAnimFrame=function(){return window.requestAnimationFrame||window.w
         setTimeout(function() {
           animatedLog("> Isso funcionou ? ", "#00FF00", "animatedIntroMessage3", function() {
             animatedLog("> Bem, Talvez a página esteja perdida para sempre", "#00FF00", "animatedIntroMessage4", function() {
-              animatedLog("> aqui está parte do seu codigo 2448", "#00FF00", "animatedIntroMessage5", function() {
-                animatedLog("> adicione uma '/' na url e coloque o código", "#00FF00", "animatedIntroMessage6", function() {
-                  animatedLog("> Lembrando que tem duas partes do código escondidas por aí", "#00FF00", "animatedIntroMessage6", function() {
-                  }, 400, 1000);
-                }, 400, 1000);
+              animatedLog(`> Aqui está seu link para acessar ${link}`, "#00FF00", "animatedIntroMessage5", function() {
+              }, 1400, 1000);
+            }, 800, 1000);
+          }, 500);
+        }, ((logs.length + 1) * 100) + 1000);
+      },
+      "18/01": function() {
+        //kittens from: http://user.xmission.com/~emailbox/ascii_cats.htm
+        var kittens = [
+          ["   |\\      _,,,---,,_", "   /,`.-'`'    -.  ;-;;,_", "  |,cats  ) )-,_..;\\ (  `'-'", " '---''(_/--'  `-'\\_)  "],
+          ["\\    /\\", " )  cats ( ')", "(  /  )", " \\(__)|]"],
+          [" /\\___/\\", " )     (", "=\\     /=", "  )   (", " / cats    \\", " )     (", "/       \\", "\\       /", " \\__ __/", "     ))", "     //", "    ((", "     \\) "]
+        ];
+        var link = `<a href="/access_granted">Clique aqui</a>`
+        logs = kittens[Math.floor(Math.random() * kittens.length)];
+        for (var i = 0, l = logs.length; i < l; i++)
+          setTimeout(function(n) {
+            log(logs[n]);
+          }, i * 100, i);
+        setTimeout(function() {
+          animatedLog("> Isso funcionou ? ", "#00FF00", "animatedIntroMessage3", function() {
+            animatedLog("> Bem, Talvez a página esteja perdida para sempre", "#00FF00", "animatedIntroMessage4", function() {
+              animatedLog(`> Aqui está seu link para acessar ${link}`, "#00FF00", "animatedIntroMessage5", function() {
               }, 1400, 1000);
             }, 800, 1000);
           }, 500);
@@ -120,7 +139,7 @@ window.requestAnimFrame=function(){return window.requestAnimationFrame||window.w
 
   function handler(input) {
     if (commands[input.split(" ")[0]] == undefined) {
-      log('Command not found', "#FF0000");
+      log('Comando não encontrado', "#FF0000");
       newline();
     } else {
       commands[input.split(" ")[0]](input.replace(new RegExp(input.split(" ")[0], ""), "").replace(/^\s+|\s+$/g, ''));
@@ -153,7 +172,7 @@ window.requestAnimFrame=function(){return window.requestAnimationFrame||window.w
   function init() {
     animatedLog(">Error 404: A página que você procura não foi encontrada, meow", "#00FF00", "animatedIntroMessage1", function() {
       window.setTimeout(function() {
-        animatedLog("> Tente executar algum comando e talvez isso conserte. meow", "#00FF00", "animatedIntroMessage2", function() {
+        animatedLog("> Talvez a data do primeiro encontro concerte. meow", "#00FF00", "animatedIntroMessage2", function() {
           newline();
         });
       }, 500);

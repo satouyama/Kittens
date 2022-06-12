@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>SHERLOCKHOLMES</title>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'><link rel="stylesheet" href="css/form.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="Overlay"></div>
+<form>
+<i class="fa fa-user"></i>
+<i class="fa fa-lock"></i>
+<input type="text" name="username" placeholder="Usuário" onkeydown="if (event.keyCode == 13) {form.password.focus();return false;}">
+<input type="password" name="password" placeholder="Senha" onkeydown="if (event.keyCode == 13) {form.submit.focus();return false;}">
+<input type="button" name="submit" value="Login" placeholder="Login" onClick="Login(this.form);">
+<!--
+
+
+  <div class="scanner">
+<div class="top-scan"><div class="solid"></div></div> 
+<div class="bottom-scan"><div class="wireframe"></div></div>   
+</div>-->  
+</form>
+<!-- partial -->
+  <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script><script  src="js/form.js"></script>
+
+</body>
+</html>
